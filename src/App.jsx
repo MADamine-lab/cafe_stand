@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import cover from './assets/cover.jpeg'
-import founder from './assets/founder.jpeg'
-import gallery1 from './assets/gallery-1.jpeg'
-import gallery2 from './assets/gallery-2.jpeg'
-import gallery3 from './assets/gallery-3.jpeg'
-import gallery4 from './assets/gallery-4.jpeg'
-import gallery5 from './assets/gallery-5.jpeg'
-import gallery6 from './assets/gallery-6.jpeg'
+import cover from './assets/cover.webp'
+import founder from './assets/founder.webp'
+import gallery1 from './assets/gallery-1.webp'
+import gallery2 from './assets/gallery-2.webp'
+import gallery3 from './assets/gallery-3.webp'
+import gallery4 from './assets/gallery-4.webp'
+import gallery5 from './assets/gallery-5.webp'
+import gallery6 from './assets/gallery-6.webp'
 
 const GALLERY = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6]
 
@@ -96,7 +96,7 @@ export default function App() {
   useEffect(() => {
     timerRef.current = setInterval(() => {
       setSlide((s) => (s + 1) % GALLERY.length)
-    }, 1500)
+    }, 1000)
     return () => clearInterval(timerRef.current)
   }, [])
 
@@ -144,7 +144,7 @@ export default function App() {
       <section className="section founder">
         <div className="founder-grid">
           <div className="founder-photo-wrap">
-            <img src={founder} alt="Ahmed Kahloun, créateur de Café Elbey" className="founder-photo" />
+            <img src={founder} alt="Ahmed Kahloun, créateur de Café Elbey" className="founder-photo" loading="lazy" decoding="async" />
             <div className="founder-frame" aria-hidden="true" />
           </div>
           <div className="founder-text">
@@ -179,6 +179,8 @@ export default function App() {
               src={src}
               alt={`Café Elbey — moment ${i + 1}`}
               className={`slide ${i === slide ? 'is-active' : ''}`}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
             />
           ))}
           <div className="slide-vignette" />
@@ -249,4 +251,4 @@ export default function App() {
       </footer>
     </div>
   )
-} 
+}
