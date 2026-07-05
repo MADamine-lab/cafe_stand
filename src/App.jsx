@@ -96,7 +96,7 @@ export default function App() {
   useEffect(() => {
     timerRef.current = setInterval(() => {
       setSlide((s) => (s + 1) % GALLERY.length)
-    }, 1000)
+    }, 1500)
     return () => clearInterval(timerRef.current)
   }, [])
 
